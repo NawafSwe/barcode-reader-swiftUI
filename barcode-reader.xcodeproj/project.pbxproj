@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		393203522561789D004D5285 /* ScannerVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393203512561789D004D5285 /* ScannerVc.swift */; };
+		3932035525617FD2004D5285 /* ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3932035425617FD2004D5285 /* ScannerView.swift */; };
 		396EDEB82561729F000A3BCA /* barcode_readerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396EDEB72561729F000A3BCA /* barcode_readerApp.swift */; };
 		396EDEBA2561729F000A3BCA /* BarcodeScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396EDEB92561729F000A3BCA /* BarcodeScannerView.swift */; };
 		396EDEBC256172A1000A3BCA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 396EDEBB256172A1000A3BCA /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 
 /* Begin PBXFileReference section */
 		393203512561789D004D5285 /* ScannerVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerVc.swift; sourceTree = "<group>"; };
+		3932035425617FD2004D5285 /* ScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerView.swift; sourceTree = "<group>"; };
 		396EDEB42561729F000A3BCA /* barcode-reader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "barcode-reader.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		396EDEB72561729F000A3BCA /* barcode_readerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = barcode_readerApp.swift; sourceTree = "<group>"; };
 		396EDEB92561729F000A3BCA /* BarcodeScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerView.swift; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 				396EDEC0256172A1000A3BCA /* Info.plist */,
 				396EDEBD256172A1000A3BCA /* Preview Content */,
 				393203512561789D004D5285 /* ScannerVc.swift */,
+				3932035425617FD2004D5285 /* ScannerView.swift */,
 			);
 			path = "barcode-reader";
 			sourceTree = "<group>";
@@ -142,6 +145,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				396EDEBA2561729F000A3BCA /* BarcodeScannerView.swift in Sources */,
+				3932035525617FD2004D5285 /* ScannerView.swift in Sources */,
 				396EDEB82561729F000A3BCA /* barcode_readerApp.swift in Sources */,
 				393203522561789D004D5285 /* ScannerVc.swift in Sources */,
 			);

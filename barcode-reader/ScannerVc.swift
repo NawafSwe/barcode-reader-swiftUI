@@ -8,7 +8,7 @@
 import UIKit
 import AVFoundation
 
-enum CameraError {
+enum CameraError :String{
     case invalidDeviceInput
     case invalidScannedValue
 }

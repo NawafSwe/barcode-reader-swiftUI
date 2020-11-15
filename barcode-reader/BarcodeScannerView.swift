@@ -12,7 +12,7 @@ struct BarcodeScannerView: View {
         NavigationView{
             
             VStack{
-              Rectangle()
+              ScannerView()
                 .frame(maxWidth: .infinity,maxHeight: 300)
                 //custom spacer
                 Spacer().frame(height:60)
