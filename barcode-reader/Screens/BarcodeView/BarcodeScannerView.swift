@@ -6,28 +6,14 @@
 //
 
 import SwiftUI
-
-struct AlertItem : Identifiable{
-    var id = UUID()
-    let title: String
-    let message:String
-    let dismissButton:Alert.Button
-    
-    
-}
-
-struct AlertContext{
-    static let invalidDeviceInput = AlertItem(title: "Error", message: "invalid input device", dismissButton: .default(Text("OK")))
-    static let invalidScannedValue = AlertItem(title: "Error", message: "invalid Scanned Value", dismissButton: .default(Text("OK")))
-}
 struct BarcodeScannerView: View {
-    @State private var scannedCode = ""
-    @State private var alertItem: AlertItem?
+
+    @ObservedObject private var viewModel: BarcodeScannerViewModel = BarcodeScannerViewModel()
     var body: some View {
         NavigationView{
             
             VStack{
-                ScannerView(scannedCode: self.$scannedCode,alertItem: self.$alertItem)
+                ScannerView(viewModel: viewModel)
                 .frame(maxWidth: .infinity,maxHeight: 300)
                 //custom spacer
                 Spacer().frame(height:60)
@@ -36,14 +22,14 @@ struct BarcodeScannerView: View {
                     .font(.title)
                 
               
-                Text(scannedCode.isEmpty ? "Not Yet Scanned" : scannedCode)
-                    .foregroundColor(self.scannedCode.isEmpty ? .red : .green)
+                Text(viewModel.scannedCode.isEmpty ? "Not Yet Scanned" : viewModel.scannedCode)
+                    .foregroundColor(self.viewModel.scannedCode.isEmpty ? .red : .green)
                     .font(.largeTitle)
                     .bold()
                     .padding()
             }
             .navigationTitle("Barcode Scanner")
-            .alert(item: $alertItem){
+            .alert(item: $viewModel.alertItem){
                 alert in
                 Alert(title: Text(alert.title), message: Text(alert.message), dismissButton: alert.dismissButton)
             }

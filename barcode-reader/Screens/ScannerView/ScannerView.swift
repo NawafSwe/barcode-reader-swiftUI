@@ -9,12 +9,11 @@ import SwiftUI
 
 struct ScannerView: UIViewControllerRepresentable {
 
-    @Binding var scannedCode : String
-    @Binding var alertItem: AlertItem?
+    @ObservedObject  var viewModel : BarcodeScannerViewModel
  
  
     func makeCoordinator() -> Coordinator {
-        return Coordinator(scannerView:self)
+        return Coordinator(barcodeScannerViewModel:viewModel)
     }
     
     func makeUIViewController(context: Context) -> ScannerVC {
@@ -25,24 +24,24 @@ struct ScannerView: UIViewControllerRepresentable {
     func updateUIViewController(_ uiViewController: ScannerVC, context: Context) {}
     
     final class Coordinator:NSObject , ScannerVCDelegate{
-        private let  scannerView: ScannerView
+        private let  barcodeScannerViewModel: BarcodeScannerViewModel
         
-        init(scannerView:ScannerView) {
-            self.scannerView = scannerView
+        init(barcodeScannerViewModel:BarcodeScannerViewModel) {
+            self.barcodeScannerViewModel = barcodeScannerViewModel
         }
         func didFind(barcode: String) {
             //setting the barcode
-            self.scannerView.scannedCode = barcode
+            self.barcodeScannerViewModel.scannedCode = barcode
         }
         
         func didSurface(error: CameraError) {
             switch error{
                 
                 case .invalidDeviceInput:
-                    scannerView.alertItem = AlertContext.invalidDeviceInput
+                    barcodeScannerViewModel.alertItem = AlertContext.invalidDeviceInput
                     
                 case .invalidScannedValue:
-                    scannerView.alertItem = AlertContext.invalidScannedValue
+                    barcodeScannerViewModel.alertItem = AlertContext.invalidScannedValue
                     
             }
         }
