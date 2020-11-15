@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct BarcodeScannerView: View {
+    @State private var scannedCode = ""
+    @Binding  var errorMessage: String
+    @Binding  var showAlert:Bool
     var body: some View {
         NavigationView{
             
             VStack{
-              ScannerView()
+                ScannerView(scannedCode: self.$scannedCode,showAlert: self.$showAlert , errorMessage: self.$errorMessage)
                 .frame(maxWidth: .infinity,maxHeight: 300)
                 //custom spacer
                 Spacer().frame(height:60)
@@ -20,9 +23,9 @@ struct BarcodeScannerView: View {
                 Label("Scanned barcode :", systemImage: "barcode.viewfinder")
                     .font(.title)
                 
-                Text("")
-                Text("Not Yet Scanned")
-                    .foregroundColor(.green)
+              
+                Text(scannedCode.isEmpty ? "Not Yet Scanned" : scannedCode)
+                    .foregroundColor(self.scannedCode.isEmpty ? .red : .green)
                     .font(.largeTitle)
                     .bold()
                     .padding()
@@ -35,6 +38,6 @@ struct BarcodeScannerView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        BarcodeScannerView()
+        BarcodeScannerView(errorMessage: .constant("error test"), showAlert: .constant(false))
     }
 }
